@@ -1,9 +1,10 @@
 from config import app
 from config import mongo
 
-def addVendor(vendor_name,vendor_gmail,vendor_phone,vendor_location,vendor_gst,vendor_photo_url):
+def addVendor(vendor_name,vendor_initial,vendor_gmail,vendor_phone,vendor_location,vendor_gst,vendor_photo_url):
     comp_info={
      "company_name":vendor_name,
+     "company_initial":vendor_initial,
      "company_gmail":vendor_gmail,
      "company_contact":vendor_phone,
      "company_location":vendor_location,
@@ -33,8 +34,8 @@ def getParticularVendor(vendor_name):
         return vendors
     return None
 
-def updateVendor(vendor_name,updated_gmail,updated_phone,updated_location,updated_gst,updated_photo_url):
+def updateVendor(vendor_name,updated_initial,updated_gmail,updated_phone,updated_location,updated_gst,updated_photo_url):
         my_query = {"company_name": vendor_name}
-        new_values = {"$set": {"company_gmail":updated_gmail,"company_phone":updated_phone,"company_location":updated_location
+        new_values = {"$set": {"company_gmail":updated_gmail,"company_initial":updated_initial,"company_phone":updated_phone,"company_location":updated_location
                                ,"company_gst":updated_gst,"company_photo":updated_photo_url}}
         return mongo.db.PUMP_VENDOR_INVENTORY.update(my_query, new_values)

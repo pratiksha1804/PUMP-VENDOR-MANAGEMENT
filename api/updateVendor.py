@@ -28,13 +28,14 @@ class vendorUpdate(Resource):
         try:
             payload = json.loads(request.data.decode())
             vendor_name = payload["vendor_name"]
+	    vendor_initial = payload["vendor_initial"]
             vendor_gmail = payload["vendor_gmail"]
             vendor_phone = payload["vendor_phone"]
             vendor_location = payload["vendor_location"]
             vendor_gst = payload["vendor_gst"]
             vendor_photo_url = payload["vendor_photo_url"]
 
-            database.updateVendor(vendor_name,vendor_gmail,vendor_phone,vendor_location,vendor_gst,vendor_photo_url)
+            database.updateVendor(vendor_name,vendor_initial,vendor_gmail,vendor_phone,vendor_location,vendor_gst,vendor_photo_url)
             return make_response(jsonify(
                 {
                     'title': "Vendor updated Successfully",
